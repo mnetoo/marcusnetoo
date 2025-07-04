@@ -1,5 +1,6 @@
 import './style.css';
 import profileImage from '../../assets/images/marcus.png';
+import curriculo from '../../assets/docs/Currículo.pdf';
 
 const Hero = () => {
   return (
@@ -13,7 +14,7 @@ const Hero = () => {
           <button className="button primary-button"
             onClick={() => {
               const link = document.createElement('a');
-              link.href = 'Currículo.pdf';
+              link.href = curriculo;
               link.download = 'Curriculo.pdf';
               document.body.appendChild(link);
               link.click();
