@@ -2,3 +2,39 @@ body
 {
     background-color: rgb(8, 6, 20);
 }
+
+/* Contêiner principal que define o contexto de empilhamento */
+.page-wrapper {
+  position: relative;
+  /* Garante que a página possa crescer se o conteúdo for maior que a tela */
+  min-height: 100vh;
+}
+
+/* O contêiner da imagem de fundo */
+.background-image-container {
+  position: absolute; /* Remove do fluxo normal e posiciona em relação ao .page-wrapper */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Propriedades da imagem de fundo */
+  background-size: cover; /* Faz a imagem cobrir todo o espaço, sem distorcer */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Impede que a imagem se repita */
+
+  /* A MÁGICA ESTÁ AQUI: define a transparência */
+  opacity: 0.08; /* Um valor baixo como 0.05 a 0.1 é ideal */
+
+  /* Garante que a imagem fique atrás do conteúdo */
+  z-index: 1;
+}
+
+/* O contêiner do conteúdo */
+.content-container {
+  position: relative; /* Necessário para que o z-index funcione corretamente */
+  /* Garante que o conteúdo fique na frente da imagem de fundo */
+  z-index: 2;
+  /* Isola este contêiner para que a opacidade do irmão não o afete */
+  isolation: isolate; 
+}
