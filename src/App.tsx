@@ -5,10 +5,10 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Home from './pages/home'
-import Portfolio from './pages/portfolio';
-import About from './pages/about';
-import Contact from './pages/contact';
+import Home from './pages/home/home'
+// import Portfolio from './pages/portfolio';
+import About from './pages/about/about';
+// import Contact from './pages/contact';
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contact" element={<Contact />} /> */}
       </Routes>
     </ Router>
   )
