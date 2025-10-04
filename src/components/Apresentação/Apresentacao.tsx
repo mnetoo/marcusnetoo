@@ -1,128 +1,32 @@
 import './Apresentacao.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faHeartbeat, faBrain, faDesktop, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faHeartbeat, faBrain, faUser, faImage } from '@fortawesome/free-solid-svg-icons';
+import FOTO from '../../assets/images/marcus.png';
+import { faMicrochip } from '@fortawesome/free-solid-svg-icons/faMicrochip';
 
 const Apresentacao = () => {
     const [activeTab, setActiveTab] = useState('about');
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        // Configurar canvas para ocupar toda a tela
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Partículas para background animado - MESMO SISTEMA DO BANNER
-        class Particle {
-            x: number;
-            y: number;
-            size: number;
-            speedX: number;
-            speedY: number;
-            color: string;
-
-            constructor(canvas: HTMLCanvasElement) {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = `rgba(${138 + Math.random() * 50}, ${43 + Math.random() * 50}, ${226 + Math.random() * 30}, ${0.3 + Math.random() * 0.3})`;
-            }
-
-            update(canvas: HTMLCanvasElement) {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas.width) this.x = 0;
-                else if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                else if (this.y < 0) this.y = canvas.height;
-            }
-
-            draw(ctx: CanvasRenderingContext2D) {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        const particles: Particle[] = [];
-        for (let i = 0; i < 100; i++) {
-            particles.push(new Particle(canvas));
-        }
-
-        // Linhas de conexão entre partículas - MESMO SISTEMA DO BANNER
-        const connectParticles = () => {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(138, 43, 226, ${0.1 * (1 - distance / 150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        };
-
-        const animate = () => {
-            if (!ctx || !canvas) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update(canvas);
-                particle.draw(ctx);
-            });
-
-            connectParticles();
-            requestAnimationFrame(animate);
-        };
-
-        animate();
-
-        return () => {
-            window.removeEventListener('resize', resizeCanvas);
-        };
-    }, []);
 
     const skills = [
-        { name: 'Web Development', level: 90, icon: faCode },
-        { name: 'Biomedical knowledge', level: 50, icon: faHeartbeat },
-        { name: 'Machine Learning', level: 40, icon: faBrain },
-        { name: 'BackEnd', level: 88, icon: faDesktop },
+        { name: 'Web Development', level: 95, icon: faCode },
+        { name: 'Biomedical knowledge', level: 60, icon: faHeartbeat },
+        { name: 'Machine Learning', level: 50, icon: faBrain },
+        { name: 'Hardware', level: 80, icon: faMicrochip },
         { name: 'Graphical User Interface (GUI)', level: 95, icon: faUser },
     ];
 
     return (
         <section className="apresentacao-container">
-            <canvas ref={canvasRef} className="background-canvas" />
-            
             <div className="apresentacao-content">
                 <div className="profile-section">
                     <div className="photo-container">
                         <div className="photo-frame">
                             <div className="photo-placeholder">
                                 <FontAwesomeIcon icon={faCode} className="photo-icon" />
-                                <span>Sua Foto Aqui</span>
+                                    <div className="photo-placeholder">
+                                        <img src={FOTO} alt="Marcus Neto" className="profile-photo" />
+                                    </div>
                             </div>
                         </div>
                         <div className="photo-glow"></div>
@@ -130,20 +34,20 @@ const Apresentacao = () => {
 
                     <div className="profile-info">
                         <h2 className="profile-name">Marcus Neto</h2>
-                        <p className="profile-title">Desenvolvedor & Pesquisador em Informática Biomédica</p>
+                        <p className="profile-title">Developer & Student in Biomedical Informatics</p>
                         
                         <div className="social-stats">
                             <div className="stat">
-                                <span className="stat-number">50+</span>
-                                <span className="stat-label">Projetos</span>
+                                <span className="stat-number">20+</span>
+                                <span className="stat-label">Projects</span>
                             </div>
                             <div className="stat">
-                                <span className="stat-number">3+</span>
-                                <span className="stat-label">Anos Exp</span>
+                                <span className="stat-number">2+</span>
+                                <span className="stat-label">Exp Years</span>
                             </div>
                             <div className="stat">
                                 <span className="stat-number">100%</span>
-                                <span className="stat-label">Dedicado</span>
+                                <span className="stat-label">Dedicated</span>
                             </div>
                         </div>
                     </div>
@@ -156,7 +60,7 @@ const Apresentacao = () => {
                                 className={`tab ${activeTab === 'about' ? 'active' : ''}`}
                                 onClick={() => setActiveTab('about')}
                             >
-                                Aboute Me
+                                About Me
                             </button>
                             <button 
                                 className={`tab ${activeTab === 'skills' ? 'active' : ''}`}
@@ -175,28 +79,28 @@ const Apresentacao = () => {
                         <div className="tab-content">
                             {activeTab === 'about' && (
                                 <div className="about-content">
-                                    <h3>Inovando na Intersecção entre Tecnologia e Saúde</h3>
+                                    <h3>Transforming Healthcare with Technology</h3>
                                     <p>
-                                        Sou um desenvolvedor full stack apaixonado por criar soluções tecnológicas 
-                                        que impactam positivamente a área da saúde. Com formação em Ciência da Computação 
-                                        e especialização em Informática Biomédica, combino expertise técnica com 
-                                        conhecimento em medicina para desenvolver aplicações inovadoras.
+                                        I'm a Biomedical Informatics undergraduate student at the Federal University of Paraná (UFPR), currently in my fourth semester. I have a strong passion for health and technology, and I believe the intersection between these fields is essential to transforming the way we manage our lives and promote well-being.
+                                    </p>
+                                    <p>
+                                        The Biomedical Informatics program combines fundamentals of scientific computing, data science, and software engineering with knowledge of biomedicine and health sciences. This prepares me to analyze, develop, and apply technological solutions capable of supporting diagnostics, optimizing clinical processes, and creating tools that positively impact society.
                                     </p>
                                     <div className="highlight-cards">
                                         <div className="highlight-card">
                                             <FontAwesomeIcon icon={faCode} />
-                                            <h4>Desenvolvimento</h4>
-                                            <p>Criação de sistemas robustos e escaláveis</p>
+                                            <h4>Algorithms and Data Structures</h4>
+                                            <p>Main optimization structures and techniques.</p>
                                         </div>
                                         <div className="highlight-card">
                                             <FontAwesomeIcon icon={faHeartbeat} />
-                                            <h4>Saúde Digital</h4>
-                                            <p>Soluções para melhorar cuidados médicos</p>
+                                            <h4>Human Body</h4>
+                                            <p>Knowledge in the main areas of medicine.</p>
                                         </div>
                                         <div className="highlight-card">
-                                            <FontAwesomeIcon icon={faBrain} />
-                                            <h4>IA & ML</h4>
-                                            <p>Algoritmos inteligentes para diagnóstico</p>
+                                            <FontAwesomeIcon icon={faImage} />
+                                            <h4>Image Processing</h4>
+                                            <p>Biomedical image analysis and image manipulation.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -230,31 +134,31 @@ const Apresentacao = () => {
                                     <h3>My Technological Journey</h3>
                                     <div className="timeline">
                                         <div className="timeline-item">
+                                            <div className="timeline-year">2025</div>
+                                            <div className="timeline-content">
+                                                <h4>Development Intern - ESTEIO S.A.</h4>
+                                                <p>Development of desktop program for processing ADS 80/100 data.</p>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-item">
                                             <div className="timeline-year">2024</div>
                                             <div className="timeline-content">
-                                                <h4>Pesquisador em IA Aplicada à Saúde</h4>
-                                                <p>Desenvolvimento de algoritmos para diagnóstico médico assistido</p>
+                                                <h4>IT Intern - Erasto Gaertner Hospital</h4>
+                                                <p>Develop solutions for radiotherapy scheduling and automation systems.</p>
                                             </div>
                                         </div>
                                         <div className="timeline-item">
-                                            <div className="timeline-year">2023</div>
+                                            <div className="timeline-year">2024</div>
                                             <div className="timeline-content">
-                                                <h4>Desenvolvedor Full Stack Sênior</h4>
-                                                <p>Criação de sistemas hospitalares integrados</p>
+                                                <h4>SisLAMIR Developer - Lamir Institute</h4>
+                                                <p>Develop a system to manage the institute's internal administration.</p>
                                             </div>
                                         </div>
                                         <div className="timeline-item">
-                                            <div className="timeline-year">2022</div>
+                                            <div className="timeline-year">2024</div>
                                             <div className="timeline-content">
-                                                <h4>Especialização em Informática Biomédica</h4>
-                                                <p>Foco em tecnologia para saúde e medicina</p>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <div className="timeline-year">2021</div>
-                                            <div className="timeline-content">
-                                                <h4>Graduação em Ciência da Computação</h4>
-                                                <p>Base sólida em desenvolvimento e algoritmos</p>
+                                                <h4>Bachelor's Degree in Biomedical Informatics</h4>
+                                                <p>Bachelor's degree at UFPR on the Polytechnic campus (in progress).</p>
                                             </div>
                                         </div>
                                     </div>

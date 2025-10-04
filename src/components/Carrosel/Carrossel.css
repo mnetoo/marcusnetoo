@@ -1,0 +1,449 @@
+.carrossel-container {
+    margin-top: 60px;
+    position: relative;
+    /* Adicionado overflow: visible para não cortar a sombra ou a perspectiva 3D */
+    overflow: visible; 
+    padding: 2rem 1rem;
+    border-top: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.carrossel-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.carrossel-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #8a2be2, #9370db, #4b0082);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.carrossel-subtitle {
+    font-size: 1.1rem;
+    color: #d8bfd8;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- SEÇÃO MODIFICADA INICIA AQUI --- */
+
+.carrossel-wrapper {
+    position: relative;
+    perspective: 2000px; /* Aumentar a perspectiva pode dar um efeito 3D mais sutil */
+    min-height: 500px;
+    /* Propriedade chave para conter as transformações 3D dos filhos */
+    transform-style: preserve-3d;
+}
+
+.carrossel-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Esconde o "verso" do card enquanto ele gira */
+    backface-visibility: hidden;
+    /* Transição suave com uma curva de aceleração mais profissional */
+    transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.7s ease;
+    /* Todos os cards começam invisíveis por padrão */
+    opacity: 0;
+    transform: translateY(10px); /* Um leve movimento vertical para a entrada */
+}
+
+/* Card ativo (no centro) */
+.carrossel-card.active {
+    opacity: 1;
+    /* Posição central, de frente para o usuário */
+    transform: rotateY(0) translateZ(0);
+}
+
+/* Card que acabou de sair (foi para a esquerda) */
+.carrossel-card.prev {
+    opacity: 0;
+    /* Gira para a esquerda e se afasta */
+    transform: rotateY(-90deg) translateZ(400px);
+}
+
+/* Próximo card (esperando à direita) */
+.carrossel-card.next {
+    opacity: 0;
+    /* Gira para a direita e se afasta */
+    transform: rotateY(90deg) translateZ(400px);
+}
+/* O valor de translateZ (400px) define o "raio" da rotação. Ajuste-o se necessário. */
+
+
+/* --- FIM DA SEÇÃO MODIFICADA --- */
+
+
+/* O keyframe @cardFlip e a classe .animating foram removidos pois não são mais necessários. */
+
+.card-3d-effect {
+    background: rgba(15, 0, 30, 0.9);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    transform: translateZ(0); /* Mantém o conteúdo do card no plano 3D correto */
+}
+
+/* ----- O RESTANTE DO SEU CÓDIGO PERMANECE IGUAL ----- */
+
+.project-image-section {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(138, 43, 226, 0.1);
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.project-image.landscape {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.image-container:hover .project-image {
+    transform: scale(1.03);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(10, 0, 20, 0.6) 0%,
+        transparent 40%,
+        transparent 70%,
+        rgba(10, 0, 20, 0.8) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.nav-btn {
+    background: rgba(138, 43, 226, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    background: #8a2be2;
+    transform: scale(1.1);
+}
+
+.image-counter {
+    color: white;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #8a2be2;
+    margin-bottom: 0.8rem;
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #d8bfd8;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(138, 43, 226, 0.2);
+    border: 1px solid rgba(138, 43, 226, 0.4);
+    color: #9370db;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.project-link {
+    padding: 0.7rem 1.2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.project-link.demo {
+    background: linear-gradient(135deg, #8a2be2, #4b0082);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.project-link.github {
+    background: transparent;
+    color: #8a2be2;
+    border: 2px solid #8a2be2;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+}
+
+.carrossel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(138, 43, 226, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.carrossel-nav:hover {
+    background: #8a2be2;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carrossel-nav.prev {
+    left: -10px;
+}
+
+.carrossel-nav.next {
+    right: -10px;
+}
+
+.carrossel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(138, 43, 226, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #8a2be2;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: #9370db;
+}
+
+.project-counter {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #8a2be2;
+    font-weight: 700;
+}
+
+.current-project {
+    font-size: 1.5rem;
+}
+
+.total-projects {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .carrossel-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .carrossel-title {
+        font-size: 2rem;
+    }
+
+    .card-3d-effect {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .carrossel-wrapper {
+        min-height: 450px;
+    }
+
+    .project-image-section {
+        min-height: 200px;
+    }
+
+    .carrossel-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carrossel-nav.prev {
+        left: -5px;
+    }
+
+    .carrossel-nav.next {
+        right: -5px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carrossel-title {
+        font-size: 1.8rem;
+    }
+
+    .carrossel-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .project-title {
+        font-size: 1.4rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-image-section {
+        min-height: 180px;
+    }
+
+    .project-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .carrossel-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carrossel-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .carrossel-title {
+        font-size: 1.6rem;
+    }
+
+    .card-3d-effect {
+        padding: 0.8rem;
+        gap: 0.8rem;
+    }
+
+    .project-image-section {
+        min-height: 150px;
+    }
+
+    .tech-tag {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .project-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+}
