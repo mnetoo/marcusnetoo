@@ -101,13 +101,13 @@ const Contato: React.FC = () => {
       texto: 'MarcusNeto'
     },
     {
-      plataforma: 'Email Pessoal',
+      plataforma: 'Personal Email',
       icone: faEnvelope,
       link: 'mailto:marcusnetoo@outlook.com',
       texto: 'marcusnetoo@outlook.com'
     },
     {
-      plataforma: 'Email Universitário',
+      plataforma: 'University Email',
       icone: faEnvelope,
       link: 'mailto:marcusneto@ufpr.com',
       texto: 'marcusneto@ufpr.com'
