@@ -97,16 +97,16 @@ const Banner = () => {
                                 <span className="code-comment">// Innovation in Technology & Health</span>
                             </div>
                             <div className="code-line">
-                                <span className="code-keyword">const</span> dev = <span className="code-bracket">{'{'}</span>
+                                <span className="code-keyword">const dev = </span><span className="code-bracket">{'{'}</span>
                             </div>
                             <div className="code-line">
-                                &nbsp;&nbsp;name: <span className="code-string">"Marcus Neto"</span>,
+                                &nbsp;&nbsp;<span className="code-property">name: </span><span className="code-string">"Marcus Neto"</span>,
                             </div>
                             <div className="code-line">
-                                &nbsp;&nbsp;stack: <span className="code-array">[</span><span className="code-string">"React"</span>, <span className="code-string">"Python"</span>, <span className="code-string">"C/C++"</span><span className="code-array">]</span>,
+                                &nbsp;&nbsp;<span className="code-property">stack: </span><span className="code-array">[</span><span className="code-string">"React"</span>, <span className="code-string">"Python"</span>, <span className="code-string">"C/C++"</span><span className="code-array">]</span>,
                             </div>
                             <div className="code-line">
-                                &nbsp;&nbsp;focus: <span className="code-string">"Health Technology"</span>
+                                &nbsp;&nbsp;<span className="code-property">focus: </span><span className="code-string">"Health Technology"</span>
                             </div>
                             <div className="code-line">
                                 <span className="code-bracket">{'}'}</span>

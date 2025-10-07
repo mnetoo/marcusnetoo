@@ -223,12 +223,16 @@
     margin-bottom: 0.3rem;
 }
 
+.code-property {
+    color: white;
+}
+
 .code-comment {
     color: #6a9955;
 }
 
 .code-keyword {
-    color: #569cd6;
+    color: white;
 }
 
 .code-string {
