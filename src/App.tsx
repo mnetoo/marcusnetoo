@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import './App.css';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
 } from 'react-router-dom';
@@ -115,7 +115,7 @@ function App() {
     <div className="app">
       <canvas ref={canvasRef} className="background-canvas" />
       <div className="app-content">
-        <Router basename="/marcusnetoo">
+        <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
