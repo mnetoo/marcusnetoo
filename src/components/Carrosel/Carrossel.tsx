@@ -8,6 +8,11 @@ import theboysImage from '../../assets/images/projects/theboys.png';
 import cepagImage from '../../assets/images/projects/sites.png';
 import ADSImage from '../../assets/images/projects/ads.jpg';
 import ADSImage2 from '../../assets/images/projects/ads2.jpg';
+import BrainTumor1 from '../../assets/images/projects/Brain-Tumor/img1.png';
+import BrainTumor2 from '../../assets/images/projects/Brain-Tumor/img2.png';
+import InvestDash1 from '../../assets/images/projects/invest-dashboard/img1.png';
+import InvestDash2 from '../../assets/images/projects/invest-dashboard/img2.png';
+import InvestDash3 from '../../assets/images/projects/invest-dashboard/img3.png';
 
 interface Projeto {
     id: number;
@@ -56,6 +61,22 @@ const Carrossel = () => {
             tecnologias: ["React", "HTML", "JavaScript"],
             imagens: [cepagImage],
             linkPreview: "https://campusmap.ufpr.br/dev/CEPAG-SitePrincipal/"
+        },
+        {
+            id: 5,
+            titulo: "NeuroSeg: Segmentation of Brain Tumors with U-Net",
+            descricao: "Deep Learning project applied to the automatic detection and segmentation of gliomas in Magnetic Resonance Imaging (MRI) images.",
+            tecnologias: ["Python", "TensorFlow", "U-Net"],
+            imagens: [BrainTumor1, BrainTumor2],
+            linkGitHub: "https://github.com/mnetoo/Brain-Tumor-Segmentation-UNet",
+        },
+        {
+            id: 5,
+            titulo: "Invest Dashboard",
+            descricao: "Invest Dash is an interactive web application developed for simplified analysis of financial assets. Through a clean and user-friendly interface, users can view price histories, percentage changes, and trends for any stock listed on Yahoo Finance.",
+            tecnologias: ["Python", "Streamlit"],
+            imagens: [InvestDash1, InvestDash2, InvestDash3],
+            linkGitHub: "https://github.com/mnetoo/invest-dashboard",   
         }
     ];
 
