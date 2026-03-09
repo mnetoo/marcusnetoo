@@ -1,6 +1,6 @@
 import './Curso.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faHeartbeat, faSquareRootVariable, faMicrochip } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faHeartbeat, faSquareRootVariable, faMicrochip, faGear } from '@fortawesome/free-solid-svg-icons';
 
 const Curso = () => {
     const materias = [
@@ -58,7 +58,17 @@ const Curso = () => {
             nome: "Fundamentals of Cell and Tissue Biology",
             descricao: "Understand the structure and function of cells and tissues in the human body.",
             icon: faHeartbeat
-        }
+        },
+        {
+            nome: "Graph Algorithms and Optimization",
+            descricao: "Study of graph theory and optimization techniques, including algorithms for shortest paths and network flows.",
+            icon: faCode
+        },
+        {
+            nome: "Requirements Engineering",
+            descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
+            icon: faGear
+        },
     ];
 
     return (

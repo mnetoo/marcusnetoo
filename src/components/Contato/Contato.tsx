@@ -11,7 +11,7 @@ const Contato: React.FC = () => {
     email: '',
     mensagem: ''
   });
-  const [likes, setLikes] = useState(72);
+  const [likes, setLikes] = useState(98);
   const [liked, setLiked] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -97,8 +97,8 @@ const Contato: React.FC = () => {
     {
       plataforma: 'LinkedIn',
       icone: faLinkedin,
-      link: 'https://www.linkedin.com/in/marcus-neto-a83319306/',
-      texto: 'MarcusNeto'
+      link: 'https://www.linkedin.com/in/marcus-neto/',
+      texto: 'Marcus Neto'
     },
     {
       plataforma: 'Personal Email',
