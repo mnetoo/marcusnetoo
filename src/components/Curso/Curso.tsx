@@ -1,6 +1,6 @@
 import './Curso.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faHeartbeat, faSquareRootVariable, faMicrochip, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faCode, faHeartbeat, faSquareRootVariable, faMicrochip, faGear, faNetworkWired, faImage, faCircleNodes } from '@fortawesome/free-solid-svg-icons';
 
 const Curso = () => {
     const materias = [
@@ -68,6 +68,36 @@ const Curso = () => {
             nome: "Requirements Engineering",
             descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
             icon: faGear
+        },
+        {
+            nome: "Molecular Biology and Bioinformatics",
+            descricao: "Study of molecular processes in living organisms and the application of computational tools for biological data analysis.",
+            icon: faHeartbeat
+        },
+        {
+            nome: "Human-Computer Interaction",
+            descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
+            icon: faCircleNodes
+        },
+        {
+            nome: "Programming Paradigms",
+            descricao: "Study of programming paradigms, covering object-oriented programming with Java and functional programming with Haskell.",
+            icon: faCode
+        },
+        {
+            nome: "Biomedical Image Processing",
+            descricao: "Acquisition, processing, and analysis techniques for medical imagery to support diagnosis and research.",
+            icon: faImage
+        },
+        {
+            nome: "Computer Networks",
+            descricao: "Fundamentals of data communication, network protocols, TCP/IP architecture, and network infrastructure.",
+            icon: faNetworkWired
+        },
+        {
+            nome: "Operating Systems",
+            descricao: "Core concepts of process management, memory allocation, file systems, and computational resource management in operating systems.",
+            icon: faMicrochip
         },
     ];
 
