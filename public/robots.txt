@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mnetoo.github.io/marcusnetoo/sitemap.xml
