@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './Contato.css';
 import { faWhatsapp, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import emailjs from 'emailjs-com';
+import SpotlightCard from '../common/SpotlightCard';
+import MagneticButton from '../common/MagneticButton';
+import './Contato.css';
 
 const Contato: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -58,9 +60,7 @@ const Contato: React.FC = () => {
       
     } catch (error) {
       // Erro - fallback para simulação
-      console.log('EmailJS not configured, using simulation');
-      
-      // Se quiser ver o erro real, descomente a linha abaixo:
+      console.error('EmailJS error:', error);
       showPopupMessage('Error sending message. Please try again.', 'error');
     } finally {
       setEnviando(false);
@@ -117,133 +117,145 @@ const Contato: React.FC = () => {
   return (
     <section className="contato-container" id="contato">
       <div className="contato-content">
-        <h2 className="contato-title">Talk to me</h2>
-        <p className="contato-subtitle">
-          Let's talk! Get in touch through social media or send a direct message.
-        </p>
+        <div className="contato-header">
+          <span className="contato-tag">// CONNECT</span>
+          <h2 className="contato-title">Talk to me</h2>
+          <p className="contato-subtitle">
+            Let's talk! Get in touch through social media or send a direct message.
+          </p>
+        </div>
 
         <div className="contato-grid">
-          {/* Contact Links */}
+          {/* Contact Links & Likes */}
           <div className="contato-links-section">
             <h3 className="section-title">Connect With Me</h3>
             <div className="links-grid">
               {contatos.map((contato, index) => (
-                <a
-                  key={index}
-                  href={contato.link}
-                  className="contato-link-card"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="link-icone">
-                    <FontAwesomeIcon icon={contato.icone} />
-                  </div>
-                  <div className="link-info">
-                    <span className="link-plataforma">{contato.plataforma}</span>
-                    <span className="link-texto">{contato.texto}</span>
-                  </div>
-                  <div className="link-arrow">→</div>
-                </a>
+                <SpotlightCard key={index} className="contato-card-wrapper" tiltMaxAngle={4}>
+                  <a
+                    href={contato.link}
+                    className="contato-link-card"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-text="Abrir"
+                  >
+                    <div className="link-icone">
+                      <FontAwesomeIcon icon={contato.icone} />
+                    </div>
+                    <div className="link-info">
+                      <span className="link-plataforma">{contato.plataforma}</span>
+                      <span className="link-texto">{contato.texto}</span>
+                    </div>
+                    <div className="link-arrow">→</div>
+                  </a>
+                </SpotlightCard>
               ))}
             </div>
 
             {/* Likes Section */}
-            <div className="likes-section">
-              <h3 className="section-title">Did you like my work?</h3>
-              <div className="likes-container">
-                <button 
-                  className={`like-btn ${liked ? 'liked' : ''}`}
-                  onClick={handleLike}
-                >
-                  <span className="like-icone">❤️</span>
-                  <span className="like-texto">
-                    {liked ? 'Liked!' : 'Like'}
-                  </span>
-                </button>
-                <div className="likes-contador">
-                  <span className="likes-numero">{likes}</span>
-                  <span className="likes-label">likes</span>
+            <SpotlightCard className="likes-card" tiltMaxAngle={4}>
+              <div className="likes-section">
+                <h3 className="section-title">Did you like my work?</h3>
+                <div className="likes-container">
+                  <MagneticButton strength={0.3}>
+                    <button 
+                      className={`like-btn ${liked ? 'liked' : ''}`}
+                      onClick={handleLike}
+                    >
+                      <span className="like-icone">❤️</span>
+                      <span className="like-texto">
+                        {liked ? 'Liked!' : 'Like'}
+                      </span>
+                    </button>
+                  </MagneticButton>
+                  <div className="likes-contador">
+                    <span className="likes-numero">{likes}</span>
+                    <span className="likes-label">likes</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
 
           {/* Message Form */}
-          <div className="form-section">
-            <h3 className="section-title">Send a Message</h3>
-            <form className="contato-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="nome" className="form-label">Your Name</label>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  value={formData.nome}
-                  onChange={handleChange}
-                  className="form-input"
-                  required
-                  placeholder="Enter your name"
-                />
-              </div>
+          <SpotlightCard className="form-card" tiltMaxAngle={3}>
+            <div className="form-section">
+              <h3 className="section-title">Send a Message</h3>
+              <form className="contato-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="nome" className="form-label">Your Name</label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                    placeholder="Enter your name"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="email" className="form-label">Your Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="form-input"
-                  required
-                  placeholder="your@email.com"
-                />
-              </div>
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">Your Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="form-input"
+                    required
+                    placeholder="your@email.com"
+                  />
+                </div>
 
-              <div className="form-group">
-                <label htmlFor="mensagem" className="form-label">Your Message</label>
-                <textarea
-                  id="mensagem"
-                  name="mensagem"
-                  value={formData.mensagem}
-                  onChange={handleChange}
-                  className="form-textarea"
-                  required
-                  rows={5}
-                  placeholder="Tell me about your project or question..."
-                />
-              </div>
+                <div className="form-group">
+                  <label htmlFor="mensagem" className="form-label">Your Message</label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    value={formData.mensagem}
+                    onChange={handleChange}
+                    className="form-textarea"
+                    required
+                    rows={5}
+                    placeholder="Tell me about your project or question..."
+                  />
+                </div>
 
-              <button 
-                type="submit" 
-                className="submit-btn"
-                disabled={enviando}
-              >
-                {enviando ? (
-                  <>
-                    <div className="loading-spinner"></div>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
-          </div>
+                <MagneticButton strength={0.25} className="w-full">
+                  <button 
+                    type="submit" 
+                    className="submit-btn"
+                    disabled={enviando}
+                    data-cursor-text="Enviar"
+                  >
+                    {enviando ? (
+                      <>
+                        <div className="loading-spinner" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <span>Send Message</span>
+                    )}
+                  </button>
+                </MagneticButton>
+              </form>
+            </div>
+          </SpotlightCard>
         </div>
       </div>
 
-      {/* Popup de Notificação */}
+      {/* Popup de Notificação Redesenhado */}
       {showPopup && (
-        <div className={`popup-overlay ${showPopup ? 'show' : ''}`}>
-          <div className={`popup-container ${popupType}`}>
+        <div className={`popup-overlay ${showPopup ? 'show' : ''}`} onClick={closePopup}>
+          <div className={`popup-container ${popupType}`} onClick={(e) => e.stopPropagation()}>
             <div className="popup-header">
               <div className="popup-icon">
                 {popupType === 'success' ? '✓' : '✕'}
               </div>
-              <button className="popup-close" onClick={closePopup}>
+              <button className="popup-close" onClick={closePopup} aria-label="Fechar">
                 ×
               </button>
             </div>
@@ -254,7 +266,7 @@ const Contato: React.FC = () => {
               <p className="popup-message">{popupMessage}</p>
             </div>
             <div className="popup-progress">
-              <div className="popup-progress-bar"></div>
+              <div className="popup-progress-bar" />
             </div>
           </div>
         </div>

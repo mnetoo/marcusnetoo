@@ -1,0 +1,114 @@
+.footer-container {
+  border-top: 1px solid rgba(138, 43, 226, 0.2);
+  background: rgba(8, 0, 18, 0.85);
+  backdrop-filter: blur(16px);
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-content {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.15);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+}
+
+.footer-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(138, 43, 226, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-light);
+  font-size: 0.95rem;
+}
+
+.footer-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+  background: rgba(138, 43, 226, 0.15);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+  margin: 0;
+}
+
+.footer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary-light);
+  background: rgba(138, 43, 226, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+}
+
+@media (max-width: 640px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

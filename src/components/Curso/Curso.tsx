@@ -1,138 +1,154 @@
-import './Curso.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode, faHeartbeat, faSquareRootVariable, faMicrochip, faGear, faNetworkWired, faImage, faCircleNodes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCode,
+  faHeartbeat,
+  faSquareRootVariable,
+  faMicrochip,
+  faGear,
+  faNetworkWired,
+  faImage,
+  faCircleNodes,
+} from '@fortawesome/free-solid-svg-icons';
+import SpotlightCard from '../common/SpotlightCard';
+import './Curso.css';
 
 const Curso = () => {
-    const materias = [
-        {
-            nome: "Algorithms I-III",
-            descricao: "Starting in Pascal, advancing to C, teaching logic and the most important and used data structures.",
-            icon: faCode
-        },
-        {
-            nome: "Human and Systemic Anatomy",
-            descricao: "Study of the structure and functioning of the human body.",
-            icon: faHeartbeat
-        },
-        {
-            nome: "Introduction to Computer Science",
-            descricao: "Presentation of scientific computing and its applications, focusing on real problems.",
-            icon: faCode
-        },
-        {
-            nome: "Digital Circuits & Computer Architecture",
-            descricao: "Learning the lowest level of computing, digital logic and processors.",
-            icon: faMicrochip
-        },
-        {
-            nome: "Pre-Calculus & Calculus I",
-            descricao: "Basic and advanced mathematics, including functions, limits, derivatives and integrals.",
-            icon: faSquareRootVariable
-        },
-        {
-            nome: "Complements of Mathematics",
-            descricao: "Mathematical logic, set theory, and how to do proofs.",
-            icon: faSquareRootVariable
-        },
-        {
-            nome: "Introduction to Analytic Geometry and Linear Algebra",
-            descricao: "Study of vectors, matrices, linear systems and their applications.",
-            icon: faSquareRootVariable
-        },
-        {
-            nome: "Organization of the Brazilian Health System",
-            descricao: "Teach how Brazil's healthcare system works, including public policies and management.",
-            icon: faHeartbeat
-        },
-        {
-            nome: "Cellular Biochemistry",
-            descricao: "Understand the smallest units of life, cells, and how they work.",
-            icon: faHeartbeat
-        },
-        {
-            nome: "Programming I-II",
-            descricao: "Basic to advanced programming in C, including data structures and algorithms.",
-            icon: faCode
-        },
-        {
-            nome: "Fundamentals of Cell and Tissue Biology",
-            descricao: "Understand the structure and function of cells and tissues in the human body.",
-            icon: faHeartbeat
-        },
-        {
-            nome: "Graph Algorithms and Optimization",
-            descricao: "Study of graph theory and optimization techniques, including algorithms for shortest paths and network flows.",
-            icon: faCode
-        },
-        {
-            nome: "Requirements Engineering",
-            descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
-            icon: faGear
-        },
-        {
-            nome: "Molecular Biology and Bioinformatics",
-            descricao: "Study of molecular processes in living organisms and the application of computational tools for biological data analysis.",
-            icon: faHeartbeat
-        },
-        {
-            nome: "Human-Computer Interaction",
-            descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
-            icon: faCircleNodes
-        },
-        {
-            nome: "Programming Paradigms",
-            descricao: "Study of programming paradigms, covering object-oriented programming with Java and functional programming with Haskell.",
-            icon: faCode
-        },
-        {
-            nome: "Biomedical Image Processing",
-            descricao: "Acquisition, processing, and analysis techniques for medical imagery to support diagnosis and research.",
-            icon: faImage
-        },
-        {
-            nome: "Computer Networks",
-            descricao: "Fundamentals of data communication, network protocols, TCP/IP architecture, and network infrastructure.",
-            icon: faNetworkWired
-        },
-        {
-            nome: "Operating Systems",
-            descricao: "Core concepts of process management, memory allocation, file systems, and computational resource management in operating systems.",
-            icon: faMicrochip
-        },
-    ];
+  const materias = [
+    {
+      nome: "Algorithms I-III",
+      descricao: "Starting in Pascal, advancing to C, teaching logic and the most important and used data structures.",
+      icon: faCode
+    },
+    {
+      nome: "Human and Systemic Anatomy",
+      descricao: "Study of the structure and functioning of the human body.",
+      icon: faHeartbeat
+    },
+    {
+      nome: "Introduction to Computer Science",
+      descricao: "Presentation of scientific computing and its applications, focusing on real problems.",
+      icon: faCode
+    },
+    {
+      nome: "Digital Circuits & Computer Architecture",
+      descricao: "Learning the lowest level of computing, digital logic and processors.",
+      icon: faMicrochip
+    },
+    {
+      nome: "Pre-Calculus & Calculus I",
+      descricao: "Basic and advanced mathematics, including functions, limits, derivatives and integrals.",
+      icon: faSquareRootVariable
+    },
+    {
+      nome: "Complements of Mathematics",
+      descricao: "Mathematical logic, set theory, and how to do proofs.",
+      icon: faSquareRootVariable
+    },
+    {
+      nome: "Introduction to Analytic Geometry and Linear Algebra",
+      descricao: "Study of vectors, matrices, linear systems and their applications.",
+      icon: faSquareRootVariable
+    },
+    {
+      nome: "Organization of the Brazilian Health System",
+      descricao: "Teach how Brazil's healthcare system works, including public policies and management.",
+      icon: faHeartbeat
+    },
+    {
+      nome: "Cellular Biochemistry",
+      descricao: "Understand the smallest units of life, cells, and how they work.",
+      icon: faHeartbeat
+    },
+    {
+      nome: "Programming I-II",
+      descricao: "Basic to advanced programming in C, including data structures and algorithms.",
+      icon: faCode
+    },
+    {
+      nome: "Fundamentals of Cell and Tissue Biology",
+      descricao: "Understand the structure and function of cells and tissues in the human body.",
+      icon: faHeartbeat
+    },
+    {
+      nome: "Graph Algorithms and Optimization",
+      descricao: "Study of graph theory and optimization techniques, including algorithms for shortest paths and network flows.",
+      icon: faCode
+    },
+    {
+      nome: "Requirements Engineering",
+      descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
+      icon: faGear
+    },
+    {
+      nome: "Molecular Biology and Bioinformatics",
+      descricao: "Study of molecular processes in living organisms and the application of computational tools for biological data analysis.",
+      icon: faHeartbeat
+    },
+    {
+      nome: "Human-Computer Interaction",
+      descricao: "A discipline focused on identifying, analyzing, documenting, and managing system requirements to ensure that user and business needs are clearly defined and fulfilled.",
+      icon: faCircleNodes
+    },
+    {
+      nome: "Programming Paradigms",
+      descricao: "Study of programming paradigms, covering object-oriented programming with Java and functional programming with Haskell.",
+      icon: faCode
+    },
+    {
+      nome: "Biomedical Image Processing",
+      descricao: "Acquisition, processing, and analysis techniques for medical imagery to support diagnosis and research.",
+      icon: faImage
+    },
+    {
+      nome: "Computer Networks",
+      descricao: "Fundamentals of data communication, network protocols, TCP/IP architecture, and network infrastructure.",
+      icon: faNetworkWired
+    },
+    {
+      nome: "Operating Systems",
+      descricao: "Core concepts of process management, memory allocation, file systems, and computational resource management in operating systems.",
+      icon: faMicrochip
+    },
+  ];
 
-    return (
-        <section className="curso-container">
-            <div className="curso-content">
-                <div className="curso-header">
-                    <h2 className="curso-title">Biomedical Informatics</h2>
-                    <p className="curso-description">
-                        Integration of information technology and health sciences to
-                        develop innovative solutions in diagnosis, treatment, and hospital management.
-                        Multidisciplinary training combining computing, medicine, and scientific research.
-                    </p>
-            
-                </div>
+  return (
+    <section className="curso-container">
+      <div className="curso-content">
+        <div className="curso-header">
+          <span className="curso-tag">// ACADEMICS</span>
+          <h2 className="curso-title">Biomedical Informatics</h2>
+          <p className="curso-description">
+            Integration of information technology and health sciences to
+            develop innovative solutions in diagnosis, treatment, and hospital management.
+            Multidisciplinary training combining computing, medicine, and scientific research.
+          </p>
+        </div>
 
-                <div className="materias-section">
-                    <h3 className="materias-title">Completed Subjects</h3>
-                    <div className="materias-grid">
-                        {materias.map((materia, index) => (
-                            <div key={index} className="materia-card">
-                                <div className="materia-header">
-                                    <div className="materia-icon">
-                                        <FontAwesomeIcon icon={materia.icon} />
-                                    </div>
-                                    <h4 className="materia-name">{materia.nome}</h4>
-                                </div>
-                                <p className="materia-descricao">{materia.descricao}</p>
-                            </div>
-                        ))}
+        <div className="materias-section">
+          <div className="materias-title-wrapper">
+            <h3 className="materias-title">Completed Subjects</h3>
+            <span className="materias-count">{materias.length} Subjects</span>
+          </div>
+
+          <div className="materias-grid">
+            {materias.map((materia, index) => (
+              <SpotlightCard key={index} className="materia-card" tiltMaxAngle={5}>
+                <div className="materia-card-inner">
+                  <div className="materia-header">
+                    <div className="materia-icon">
+                      <FontAwesomeIcon icon={materia.icon} />
                     </div>
+                    <h4 className="materia-name">{materia.nome}</h4>
+                  </div>
+                  <p className="materia-descricao">{materia.descricao}</p>
                 </div>
-            </div>
-        </section>
-    );
+              </SpotlightCard>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Curso;
